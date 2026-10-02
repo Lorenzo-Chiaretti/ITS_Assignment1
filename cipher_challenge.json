@@ -1,0 +1,21 @@
+{
+  "block_bytes": 16,
+  "encoding": "128-bit big-endian; exact bytes; no padding",
+  "known_plaintext_hex": "6b6e6f776e2d626c6f636b2d30303031",
+  "known_ciphertext_hex": "0e2061c487fe8e09eda7238088d1a6ea",
+  "challenges": [
+    {
+      "id": "C1",
+      "ciphertext_hex": "4d6200ace534a5a346c483828ad385e9"
+    },
+    {
+      "id": "C2",
+      "ciphertext_hex": "8fe200a68d9547e184c681828ad38769"
+    },
+    {
+      "id": "C3",
+      "ciphertext_hex": "6d4381ef669d6f49076f48628ad387a9"
+    }
+  ],
+  "target_plaintext_hex": "73747564656e743d3132333435202020"
+}
