@@ -1,6 +1,6 @@
 import json
 
-from BAD_cipher import BLOCK_BYTES, MASK, encrypt, rotate_left_13, xor  # noqa: E402
+from Materials.BAD_cipher import BLOCK_BYTES, MASK, encrypt, rotate_left_13, xor  # noqa: E402
 
 
 def rotate_right_13(block: bytes) -> bytes:
