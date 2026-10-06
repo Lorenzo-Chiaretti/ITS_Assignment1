@@ -1,10 +1,13 @@
 import json
+import sys
+from pathlib import Path
 
-from Materials.BAD_cipher import BLOCK_BYTES, MASK, encrypt, rotate_left_13, xor  # noqa: E402
+ROOT = Path(__file__).resolve().parent.parent   
+sys.path.insert(0, str(ROOT))                   
 
+from Materials.BAD_cipher import BLOCK_BYTES, MASK, encrypt, rotate_left_13, xor 
 
 def rotate_right_13(block: bytes) -> bytes:
-    """Inverse of R: rotate right by 13 (equivalently left by 115)."""
     v = int.from_bytes(block, "big")
     return (((v >> 13) | (v << 115)) & MASK).to_bytes(BLOCK_BYTES, "big")
 
@@ -14,7 +17,7 @@ def decrypt(ct: bytes, key1: bytes, key2: bytes) -> bytes:
 
 
 def main():
-    with open("cipher_challenge.json") as f:
+    with open(ROOT / "Materials" / "cipher_challenge.json") as f:
         data = json.load(f)
 
     p0 = bytes.fromhex(data["known_plaintext_hex"])
@@ -41,7 +44,6 @@ def main():
     print("Target ciphertext:", enc_eff(target).hex())
 
     # Sanity: verify against the real cipher using a random key pair that
-    # produces the same effective key C (pick K1 arbitrary, K2 = C xor R(K1)).
     k1 = bytes(range(16))
     k2 = xor(C, rotate_left_13(k1))
     assert encrypt(p0, k1, k2) == c0
