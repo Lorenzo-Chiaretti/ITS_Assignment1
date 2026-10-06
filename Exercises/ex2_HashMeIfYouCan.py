@@ -8,6 +8,7 @@ def H(m: str, b: int) -> bytes:
     return hashlib.sha256(m.encode("utf-8")).digest()[: b // 8]
 
 
+# Exercise 2.a
 def find_collision(b: int, prefix: str = "msg-"):
     seen = {} 
     i = 0

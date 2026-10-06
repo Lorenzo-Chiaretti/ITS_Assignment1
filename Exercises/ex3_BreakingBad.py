@@ -10,7 +10,6 @@ def rotate_right_13(block: bytes) -> bytes:
 
 
 def decrypt(ct: bytes, key1: bytes, key2: bytes) -> bytes:
-    """3a: P = R^{-1}(C xor K2) xor K1."""
     return xor(rotate_right_13(xor(ct, key2)), key1)
 
 
